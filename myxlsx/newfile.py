@@ -49,18 +49,14 @@ def getnewxls(data):
     booksheet = workbook.add_sheet('Sheet 1', cell_overwrite_ok=True)
     # # 存一行数据
     rowdata = [u'',u'廖颖',u'孟轲',u'彭俊华',u'陆志强',u'罗词威',u'贺礼云',u"周其林"]
-    # colsdata = [u'',u'廖颖',u'孟轲',u'戴孙钱',u'兰钧耀',u'黎宏',u'罗词威',u'陆志强',u'杨雨',u'刑定宇',u'贺礼云',u'彭俊华',u'袁冁鑫',u'惠明珠',u'徐洪浩',u'张承文',u'段世峰',u'张兆伟',u'赵敏',u'周其林',]
+
     data = data
     print data[0][1]
     for i in range(len(rowdata)):
         booksheet.write(0, i, rowdata[i])
-    # for i in range(len(colsdata)):
-    #     booksheet.write(i, 0, colsdata[i])
-    # for j in range(len(data)):
+
     for k in range(19):
         for a in range(8):
-            # print k+1,a+1,data[k+1][a+1]
-            # booksheet.write(k+1,a+1,data[k+1][a+1].value)
             booksheet.write(k+1,a,data[k][a].value)
     workbook.save('test3_xlwt.xls')
 

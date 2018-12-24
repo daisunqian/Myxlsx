@@ -31,65 +31,33 @@ for i in range(len(L)):
         print(workbook.sheet_names())                  #查看所有sheet
         # booksheet = workbook.sheet_by_index(0)         #用索引取第一个sheet
     booksheet = workbook.sheet_by_name('IO-LIST')  #或用名称取sheet
+
     # # #读单元格数据
     cell_11 = booksheet.cell_value(0,0)
     cell_21 = booksheet.cell_value(1,0)
-    cell_33 = booksheet.cell_value(0,1)
-    if booksheet.cell(0,0).ctype == 0:
-        print 32323232
+    print(cell_11, cell_21)
+
     # #读一行数据
-    row_3 = booksheet.row(3)
+    row_3 = booksheet.row_values(3)
+    print row_3
+    # 读取一列的数据
+    col_3 = booksheet.col_values(3)
+    print col_3
+
     print booksheet.row_values(3)[0].encode("utf-8")
     print booksheet.row(2)[2].ctype
     print booksheet.cell_value(3,0)
-    print(cell_11, cell_21, row_3)
-    print row_3
-    len = booksheet.row_len(3)
-    print(len)
-
-    # for i in range(booksheet.nrows):
-    #     for j in range(booksheet.ncols):
-    #         print(booksheet.cell_value(i,j))
-    # for i in range(booksheet.nrows):
-    #     for j in range(booksheet.ncols):
-    #         if 1 == booksheet.cell(i,j).ctype or 2 == booksheet.cell(i,j).ctype :
-    #             print(booksheet.cell_value(i, j))
-
-    for i in range(booksheet.nrows):
-        if 1 == booksheet.cell(i,0).ctype and 2 == booksheet.cell(i,1).ctype:
-
-            H.append(booksheet.row(i))
-            # print H
-        print "+++++++",i,H
-
-    row4 = booksheet.row_values(3)
-    # row5 = booksheet.row(3)
-    # # print(cell_33)
-    print (row4)
-    # # print(row5)
-    # # data = pd.read_excel('C:\\Users\\daisq\\Desktop\\exexl\\222.xlsx',engine="xlrd")
-    # # print data
-    # print booksheet.nrows,booksheet.ncols
-    # print booksheet.row_values(3)
-    # print booksheet.cell(0,2).ctype
 
 
-    # for e in range(len(row_3)):
-    #    sunfile.write(8,e,row_3[e])
-    #    f.save('sumfile.xlsx')
+    #查看单元格内数据的数据类型
+    # 说明：ctype: 0empty, 1string, 2number, 3date, 4boolean, 5error
+    print booksheet.cell(0, 0).ctype
+    #打印表格行数
+    print booksheet.nrows
+    #打印表格列数
+    print booksheet.ncols
 
 
-    # data = xlwt.Workbook(encoding="utf-8")
-    # fristsheet = data.add_sheet("mySheer 1",cell_overwrite_ok=True)
-    # ha=[u'\u6234\u5b59\u94b1', 90.0, 85.0, 85.0, 80.0, 80.0, 85.0, 90.0]
-    # if fristsheet>0:
-    #     print 2222222222
-    # print "**********",ha
-    # for h in range(ha):
-    #     print 2222233333
-    #     fristsheet.write(0,h,ha[h])
-    #     print 33333
-    # data.save("mytset.xls")
     # workbook = xlwt.Workbook(encoding='utf-8')
     # booksheet = workbook.add_sheet('Sheet 1', cell_overwrite_ok=True)
     # #存第一行cell(1,1)和cell(1,2)
@@ -103,5 +71,5 @@ for i in range(len(L)):
     # for i in range(len(rowdata)):
     #     booksheet.write(2,i,rowdata[i])
     # workbook.save('test_xlwt.xls')
-    #
-    #
+
+
